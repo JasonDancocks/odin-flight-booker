@@ -1,6 +1,10 @@
 class Flight < ApplicationRecord
 	belongs_to :destination_airport, class_name: :Airport
 	belongs_to :origin_airport, class_name: :Airport
+	has_many :flights
+	has_many :bookings
+
+	has_many :passengers, through: :bookings
 
 	def self.available_dates
 		flights = all.order(start_date: :asc)

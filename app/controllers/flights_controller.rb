@@ -7,4 +7,6 @@ class FlightsController < ApplicationController
 			@available_flights = Flight.available_flights(params)
 		end
 	end
+
+	
 end

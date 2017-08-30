@@ -23,7 +23,7 @@
 <% if !params[:commit].nil? %>
 
  <% if @available_flights.any? %>
-	<%= form_tag( root_path, method: :get) do %>
+	<%= form_tag( new_booking_path, method: :get) do %>
 
 	<% @available_flights.each do |f| %>
 
