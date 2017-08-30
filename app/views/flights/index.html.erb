@@ -1,0 +1,27 @@
+<h1>Flights</h1>
+
+<%= form_tag(root_path, method: :get) do %>
+
+<%= label_tag(:origin_airport_id, "Origin Airport")%>
+<%= select_tag(:origin_airport_id, options_for_select(@airport_options)) %>
+
+<%= label_tag(:destination_airport_id, "Destination Airport")%>
+<%= select_tag(:destination_airport, options_for_select(@airport_options)) %>
+
+<%= label_tag(:start_date, "Start Date")%>
+<%= select_tag(:start_date, options_for_select(@flight_dates)) %>
+
+<%= label_tag(:passengers, "No. of Passengers") %>
+<%= select_tag(:passengers, options_for_select([1,2,3,4])) %>
+
+<%= submit_tag("Search") %>
+
+<% end %>
+
+
+<% if @available_flights.any? %>
+
+<%= form_tag( "#", method: :get) do %>
+
+<% @available_flights.each do
+<%= radio_button_tag(:flight_id, f.id)
