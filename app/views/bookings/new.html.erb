@@ -2,33 +2,33 @@
 
 <%= form_for @booking do |b| %>
 
-	<%= label_tag(:start_date, @flight.start_date_formatted ) %>
+<%= label_tag(:start_date, @flight.start_date_formatted ) %>
 
-	<%= label_tag(:flight_time, @flight.flight_time ) %>
+<%= label_tag(:flight_time, @flight.flight_time ) %>
 
 
-	<%= label_tag(:origin_airport, @flight.origin_airport.code ) %>
+<%= label_tag(:origin_airport, @flight.origin_airport.code ) %>
 
-	<%= label_tag(:destination_airport, @flight.destination_airport.code ) %>
+<%= label_tag(:destination_airport, @flight.destination_airport.code ) %>
+<%= b.hidden_field :flight_id, value: @flight.id %>
+<br>
 
-	<br>
+<% passenger_num = 1 %>
 
-	<% passenger_num = 1 %>
+<%= b.fields_for :passengers do |p_form| %>
 
-	<%= b.fields_for :passengers do |p_form| %>
+<%= p_form.label(:passenger, "Passenger #{passenger_num}") %>
+<br>
+<%= p_form.label(:name, "Name") %>
+<%= p_form.text_field(:name) %>
+<br>
+<%= p_form.label(:email, "Email") %>
+<%= p_form.text_field(:email) %>
+<br>
+<% passenger_num += 1 %>
 
-		<%= p_form.label(:passenger, "Passenger #{passenger_num}") %>
-		<br>
-		<%= p_form.label(:name, "Name") %>
-		<%= p_form.text_field(:name) %>
-		<br>
-		<%= p_form.label(:email, "Email") %>
-		<%= p_form.text_field(:email) %>
-		<br>
-		<% passenger_num += 1 %>
+<% end %>
 
-	<% end %>
-
-	<%= submit_tag("Book Flight") %>
+<%= submit_tag("Book Flight") %>
 
 <% end %>

@@ -1,2 +1,10 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<h1>Your Booking</h1>
+<%= @booking.flight.origin_airport.code %>
+<%= @booking.flight.destination_airport.code %>
+<%= @booking.flight.start_date_formatted %>
+<%= @booking.flight.flight_time %>
+<br>
+<% @booking.passengers.map do |p| %>
+<%= "Name: #{p.name}" %> <br>
+<%= "email: #{p.email}" %> <br>
+<% end %>
