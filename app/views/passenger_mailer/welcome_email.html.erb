@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to example.com, <%= @lead_passenger.name %></h1>
+    <p>
+      You have successfully booked your flight from <%= @flight.airport(0) %> to <%= @flight.airport(1) %>.
+
+			Your departure date is <%= @flight.start_date_formatted%> and you fly at <%= @flight.flight_time%>.
+
+			Passengers on this flight:<br>
+
+      <% @booking.passengers.each do |p| %>
+      		<%= p.name %> <br>
+      		<%end %>
+
+      <br>
+    </p>
+    <p>
+      To check your booking, just follow this <%= link_to("link:", booking_url(@booking)) %>.
+    <p>Thanks for flying with us and have a great day!</p>
+  </body>
+</html>

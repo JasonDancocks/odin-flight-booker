@@ -1,0 +1,16 @@
+
+Welcome to example.com, <%= @lead_passenger.name %>
+
+You have successfully booked your flight from <%= @flight.airport(0) %> to <%= @flight.airport(1) %>.
+Your departure date is <%= @flight.start_date_formatted%> and you fly at <%= @flight.flight_time%>.
+
+Passengers on this flight:
+
+<% @booking.passengers.each do |p| %>
+<%= p.name %> 
+<%end %>
+
+
+To check your booking, just follow this <%= link_to("link:", booking_url(@booking)) %>.
+
+Thanks for flying with us and have a great day!

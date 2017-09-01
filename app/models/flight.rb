@@ -29,4 +29,12 @@ class Flight < ApplicationRecord
 		start_date.strftime("%H : %M")
 	end
 
+	def airport(num)
+		if num == 0
+			return origin_airport.code
+		elsif num == 1
+			return destination_airport.code
+		end
+	end
+
 end

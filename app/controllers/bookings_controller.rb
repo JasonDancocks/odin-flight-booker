@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
 		@booking = Booking.new(booking_params)
 		@flight = Flight.find(params[:booking][:flight_id])
 		if @booking.save!
+			PassengerMailer.welcome_email(@booking).deliver_now
 			redirect_to @booking
 			flash[:success] = "Booking successful"
 		else
